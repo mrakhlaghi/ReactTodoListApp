@@ -15,8 +15,18 @@ const TodoList = ({
   console.log(fetchError.message);
   console.log(loading);
   const renderTodos = () => {
-    if (loading) return <div className="text-place"><p>Loading ...</p></div>;
-    if (fetchError) return <div className="text-place"><p>{fetchError.message}</p></div>;
+    if (loading)
+      return (
+        <div className="text-place">
+          <p>Loading ...</p>
+        </div>
+      );
+    if (fetchError)
+      return (
+        <div className="text-place">
+          <p>{fetchError.message}</p>
+        </div>
+      );
     if (todos.length === 0) {
       return (
         <div className="text-place">
@@ -24,23 +34,23 @@ const TodoList = ({
         </div>
       );
     }
-   if( !fetchError && !loading && todos.length !== 0){
-    return (
-      <div className="todoList">
-        {todos.map((todo) => {
-          return (
-            <Todo
-              key={todo.id}
-              todo={todo}
-              onComplete={() => onComplete(todo.id)}
-              onDelete={() => onDelete(todo.id)}
-              onEdit={() => setEdit(todo)}
-            />
-          );
-        })}
-      </div>
-    );
-   }
+    if (!fetchError && !loading && todos.length !== 0) {
+      return (
+        <div className="todoList">
+          {todos.map((todo) => {
+            return (
+              <Todo
+                key={todo.id}
+                todo={todo}
+                onComplete={() => onComplete(todo.id)}
+                onDelete={() => onDelete(todo.id)}
+                onEdit={() => setEdit(todo)}
+              />
+            );
+          })}
+        </div>
+      );
+    }
   };
 
   const editTodo = (newValue) => {

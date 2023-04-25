@@ -46,7 +46,6 @@ const TodoApp = () => {
     const updatedTodos = [...todos];
     updatedTodos[index] = selectedTodo;
     setTodos(updatedTodos);
-    // setFilteredTodos()
   };
   const deleteTodo = (id) => {
     const filteredTodos = todos.filter((todo) => todo.id !== id);
@@ -106,7 +105,6 @@ const TodoApp = () => {
         onDelete={deleteTodo}
         loading={loading}
         fetchError={fetchError}
-        // onEdit={editTodo}
         onUpdateTodo={updateTodo}
       />
     </div>

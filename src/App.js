@@ -7,7 +7,7 @@ import TodoApp from './components/TodoApp';
 const App = () => {
     return ( 
         <div className='app'>
-            <h1>Todolist app - Mojtaba</h1>
+            <h1>TodoList app - Mojtaba</h1>
             <TodoApp/>
 
         </div>
