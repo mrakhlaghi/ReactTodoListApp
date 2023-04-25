@@ -18,9 +18,9 @@ console.log(selectedFilterOption);
       styles={{
         control: (baseStyles, state) => ({
           ...baseStyles,
-          borderColor: state.isFocused ? 'rgb(255 218 117)' : 'rgb(117 97 42)',
+          borderColor: state.isFocused ? 'rgb(255 218 117)' : 'rgb(231 196 101)',
           boxShadow: state.isFocused? ' 0 0 0 1px rgb(255 218 117)':' 0 0 0 1px rgb(255 218 117)' ,
-          // borderColor: state.hover? ' 1px solid rgb(255 218 117)':' 0 0 0 1px rgb(255 218 117)' ,
+          
           "&:hover": {
             borderColor: "rgb(206, 180, 109)"
           }
@@ -30,8 +30,8 @@ console.log(selectedFilterOption);
           backgroundColor: state.isSelected ? "#fff3d7" : "#fff3d7",
           color: state.isSelected ? "rgb(117 97 42)" : "#aeaeae",   
           "&:hover": {                                           // overriding hover
-            backgroundColor: state.isSelected ? "#feecc1" : "#f8ebcc",                                        // apply initial styles
-            color: state.isSelected ? "rgb(117 97 42)" : "rgb(179, 151, 74)",                                        // apply initial styles
+            backgroundColor: state.isSelected ? "#feecc1" : "#f8ebcc",
+            color: state.isSelected ? "rgb(117 97 42)" : "rgb(179, 151, 74)", 
           },
         })
       }}

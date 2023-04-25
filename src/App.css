@@ -4,28 +4,23 @@
     --secondaryColor: #ede9fe;
     --mainRed: #db2777;
 }
-
 *{
     margin: 0;
     padding: 0;
 }
-
 ::-webkit-scrollbar {
     width: 5px;
   }
-  
   /* Track */
   ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px grey; 
     border-radius: 10px;
   }
-   
   /* Handle */
   ::-webkit-scrollbar-thumb {
     background: rgba(192, 71, 83, 0.9); 
     border-radius: 10px;
   }
-  
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: #b30000; 
@@ -46,20 +41,23 @@ body {
     background: linear-gradient(210deg, rgb(251, 188, 17) 35%, rgb(255, 226, 154) 100%);
      */
     background: #C6FFDD;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #f7797d, #FBD786, #C6FFDD);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(305deg, #f7797d, #FBD786, #C6FFDD); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
-
-   background-size: cover;
-   background-repeat: no-repeat;
-   min-height: 100vh;
-   height: 100%;
-   background-size: cover;
-   overflow-x: hidden;
+    background: -webkit-linear-gradient(305deg, #f7797d, #FBD786, #C6FFDD);  
+    background: linear-gradient(305deg, #f7797d, #FBD786, #C6FFDD); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    height: 100vh;
+    overflow-x: hidden;
 }
 
 p,h1,h2{
     color: rgb(117 97 42);
+}
+h1{
+    font-size: 26px;
+}
+h2{
+    font-size: 20px;
 }
 .app{
     width: 100vw;
@@ -68,7 +66,6 @@ p,h1,h2{
     align-items: center;
     margin-top: 20px;
     padding: 10px;
-    
 }
 
 .app h1{
@@ -78,27 +75,45 @@ p,h1,h2{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 40rem;
-    min-height: 400px;
-    padding: 19px;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 19px;
+    width: 300px;
+    min-height: 400px;
+}
+
+  .header {
+    display: grid;
+    grid-template-columns: 15% 85%;
+    grid-template-areas: 
+        " span h2 "
+        " select  select"
+    ;
+    align-items:center;
+    margin: 20px auto  ;
+    
+}
+.add-todo-text{
+    width: 17rem;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .todo{
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    width: 20rem;
     margin: 10px 0 ;
     padding: 5px 7px;
     border: none;
-    /* background-color:var(--secondaryColor) ; */
     backdrop-filter: blur(5px);
     border-radius: 5px;
+    justify-content: space-between;
+    width: 16rem;
     
 }
 .todo:hover{
@@ -108,7 +123,9 @@ p,h1,h2{
 .todoText{
     cursor: pointer;
     font-weight: bold;
-    /* color: var(--primaryColor); */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 10rem;
     color: rgb(152 126 51 / 82%);
 }
 .completed{
@@ -120,21 +137,18 @@ p,h1,h2{
     border-radius: 5px;
     padding: 5px 3px;
     outline: none;
-    width: 200px;
-    /* filter: blur(1.5rem); */
     opacity: 70%;
+    width: 170px;
 }
 .input:focus{
-    /* border: 2px solid blueviolet; */
     border: 2px solid rgb(255 218 117);
-    
 }
 .formControl{
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 20rem;
+    justify-content: space-around;
     margin-bottom: 20px;
+    width: 17rem;
 }
 .btn{
     color: #6b28d9;
@@ -145,8 +159,8 @@ p,h1,h2{
     padding: 5px 10px;
     cursor: pointer; 
     box-shadow: 3px 5px 6px 0px rgba(236,230,245,0.29);
-/* -webkit-box-shadow: 10px 10px 5px 0px rgba(236,230,245,0.29); */
-/* -moz-box-shadow: 10px 10px 5px 0px rgba(236,230,245,0.29); */
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(236,230,245,0.29);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(236,230,245,0.29);
 }
 .editBtn,.deleteBtn{
     text-align: center;
@@ -174,12 +188,10 @@ p,h1,h2{
 -moz-box-shadow: 10px 10px 5px 0px rgba(240,218,218,0.29);
 }
 .addTodo,.updateTodo{
-    /* color: rgb(251, 188, 17); */
-    /* color: rgb(238 174 0); */
     color: rgb(206 154 10);
     opacity: 80%;
     background-color: rgb(255, 242, 207);
-    border: unset;
+    border: none;
     transition: all 0.3s;
 }
 .addTodo:hover ,.updateTodo:hover{
@@ -189,14 +201,10 @@ p,h1,h2{
 }
 
 
-header{
-    display: flex;
-    justify-content: center;
-    align-items:center;
-    margin-bottom: 30px;
-}
-header span{
-    margin-right: 15px;
+
+
+.header span{
+    grid-area: span;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -207,19 +215,57 @@ header span{
     color: rgb(238 174 0);
     border-radius: 50%;
     opacity: 80%;
+
+    margin-right: 17px;
+}
+.header h2{
+    grid-area: h2;
+    white-space: nowrap; 
 }
 .filter-select{
     display: flex;
-    justify-content: center;   
+    justify-content: center;
+    grid-area: select;
     width: 10rem;
     height: 20px;
-    margin: 40px 20px; 
+    margin: 40px auto; 
     align-items: center;   
     margin-bottom: 40px;
+    
+    
 }
 
 .filter{
     width: 100%;
     backface-visibility: visible;
-    /* height: 20px; */
 }
+
+@media  all and (min-width: 640px) {
+    .container {
+        width: 40rem;
+    }
+    .header{
+        grid-template-columns: 9% 60% 31% ;
+        grid-template-areas: 
+         " span h2 select"
+    ;
+        
+    }
+    .formControl{
+        justify-content: space-between ;
+        min-width: 20rem;
+    }
+    .todo{
+        min-width: 24rem;
+    }
+    .input{
+        min-width: 230px;
+    }
+    .filter-select{
+        margin: 30px auto ; 
+    }
+    .todoText{
+        max-width: 15rem  ;
+    }
+  }
+  
