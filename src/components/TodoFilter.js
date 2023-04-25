@@ -9,7 +9,6 @@ const FilterOptions = [
 
 const TodoFilter = ({selectedFilterOption,filterOnchange}) => {
   
-console.log(selectedFilterOption);
 
 
   return (

@@ -23,7 +23,7 @@
   }
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: #b30000; 
+    background: #ff6868; 
   }
 
 
@@ -46,7 +46,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 100vh;
-    height: 100vh;
+    /* height: 100vh; */
     overflow-x: hidden;
 }
 
@@ -88,7 +88,7 @@ h2{
 
   .header {
     display: grid;
-    grid-template-columns: 15% 85%;
+    grid-template-columns: 12% 88%;
     grid-template-areas: 
         " span h2 "
         " select  select"
@@ -97,7 +97,7 @@ h2{
     margin: 20px auto  ;
     
 }
-.add-todo-text{
+.text-place{
     width: 17rem;
     height: 5rem;
     display: flex;
@@ -122,6 +122,7 @@ h2{
 }
 .todoText{
     cursor: pointer;
+    white-space: nowrap;
     font-weight: bold;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -151,16 +152,13 @@ h2{
     width: 17rem;
 }
 .btn{
-    color: #6b28d9;
     background-color: #fff;
     border: 1px solid #6b28d9;
     border-radius: 5px;
     outline: none;
     padding: 5px 10px;
     cursor: pointer; 
-    box-shadow: 3px 5px 6px 0px rgba(236,230,245,0.29);
-    -webkit-box-shadow: 10px 10px 5px 0px rgba(236,230,245,0.29);
-    -moz-box-shadow: 10px 10px 5px 0px rgba(236,230,245,0.29);
+   
 }
 .editBtn,.deleteBtn{
     text-align: center;
@@ -234,6 +232,8 @@ h2{
     
     
 }
+
+
 
 .filter{
     width: 100%;

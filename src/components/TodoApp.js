@@ -3,11 +3,37 @@ import TodoList from "./TodoList";
 // import styles from "../App.module.css";
 import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
+import axios from "axios";
 
 const TodoApp = () => {
   const [todos, setTodos] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [fetchError, setFetchError] = useState(false);
   const [filteredTodos, setFilteredTodos] = useState([]);
-  const [selectedFilterOption, setSelectedFilterOption] = useState({ value: "", label: "All" });
+  const [selectedFilterOption, setSelectedFilterOption] = useState({
+    value: "",
+    label: "All",
+  });
+
+  useEffect(() => {
+    async function getTodos() {
+      setLoading(true);
+      await axios
+        .get("https://jsonplaceholder.typicode.com/todos")
+        .then((res) => {
+          let todosData = res.data.slice(0, 6);
+          setTodos(todosData);
+          setLoading(false);
+        })
+        .catch((error) => {
+          setFetchError(error);
+          setLoading(false);
+          console.log(fetchError);
+        });
+    }
+
+    getTodos();
+  }, []);
 
   useEffect(() => {
     filterTodos(selectedFilterOption);
@@ -16,7 +42,7 @@ const TodoApp = () => {
   const completeTodo = (id) => {
     const index = todos.findIndex((todo) => todo.id === id);
     const selectedTodo = { ...todos[index] };
-    selectedTodo.isCompleted = !selectedTodo.isCompleted;
+    selectedTodo.completed = !selectedTodo.completed;
     const updatedTodos = [...todos];
     updatedTodos[index] = selectedTodo;
     setTodos(updatedTodos);
@@ -27,17 +53,12 @@ const TodoApp = () => {
     console.log(filteredTodos);
     setTodos(filteredTodos);
   };
-  const unCompTodos = todos.filter((todo) => !todo.isCompleted).length;
-
-  // const editTodo = (id) => {
-  //   const selectedTodo = todos.find((todo) => todo.id === id);
-
-  // };
+  const unCompTodos = todos.filter((todo) => !todo.completed).length;
 
   const updateTodo = (id, newValue) => {
     const index = todos.findIndex((todo) => todo.id === id);
     const selectedTodo = { ...todos[index] };
-    selectedTodo.text = newValue;
+    selectedTodo.title = newValue;
     const updatedTodos = [...todos];
     updatedTodos[index] = selectedTodo;
     setTodos(updatedTodos);
@@ -46,8 +67,8 @@ const TodoApp = () => {
   const addTodo = (input) => {
     const newTodo = {
       id: Math.floor(Math.random() * 1000),
-      text: input,
-      isCompleted: false,
+      title: input,
+      completed: false,
     };
     setTodos([...todos, newTodo]);
   };
@@ -55,19 +76,17 @@ const TodoApp = () => {
   const filterTodos = (selectedFilterOption) => {
     switch (selectedFilterOption.value) {
       case "completed":
-        setFilteredTodos(todos.filter((t) => t.isCompleted));
+        setFilteredTodos(todos.filter((t) => t.completed));
         break;
       case "uncompleted":
-        setFilteredTodos(todos.filter((t) => !t.isCompleted));
+        setFilteredTodos(todos.filter((t) => !t.completed));
         break;
       default:
         setFilteredTodos(todos);
     }
-    // console.log(selectedFilterOption);
   };
 
   const selectHandler = (e) => {
-    console.log(e.value);
     setSelectedFilterOption(e);
     filterTodos(e.value);
   };
@@ -85,6 +104,8 @@ const TodoApp = () => {
         todos={filteredTodos}
         onComplete={completeTodo}
         onDelete={deleteTodo}
+        loading={loading}
+        fetchError={fetchError}
         // onEdit={editTodo}
         onUpdateTodo={updateTodo}
       />
