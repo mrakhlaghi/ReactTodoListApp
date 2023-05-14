@@ -12,8 +12,8 @@ const TodoList = ({
 }) => {
   const [edit, setEdit] = useState({ id: null, title: "", completed: false });
 
-  console.log(fetchError.message);
-  console.log(loading);
+  // console.log(fetchError.message);
+  // console.log(loading);
   const renderTodos = () => {
     if (loading)
       return (

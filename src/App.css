@@ -253,7 +253,7 @@ h2{
     }
     .formControl{
         justify-content: space-between ;
-        min-width: 20rem;
+        min-width: 21rem;
     }
     .todo{
         min-width: 24rem;

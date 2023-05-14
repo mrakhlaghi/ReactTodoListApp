@@ -2,14 +2,15 @@ import { useEffect, useRef, useState } from "react";
 // import styles from '../App.module.css';
 
 const TodoForm = (props) => {
-  const [input, setInput] = useState(props.edit ? props.edit.text : "");
+  const [input, setInput] = useState(props.edit ? props.edit.title : "");
   const inputRef = useRef(null);
-
+  
   useEffect(() => {
     inputRef.current.focus();
   }, []);
 
   const changeHandler = (e) => {
+    console.log(e.target.value);
     setInput(e.target.value);
   };
   const submitHandler = (e) => {
